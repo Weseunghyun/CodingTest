@@ -9,14 +9,14 @@ class Honor {
             int[] answer = new int[score.length];
             int min = 2001;
 
-            for(int i=0; i<score.length; i++){
-                if (i<k){
+            for (int i = 0; i < score.length; i++) {
+                if (i < k) {
                     arr[i] = score[i];
-                    if(min > arr[i]){
+                    if (min > arr[i]) {
                         min = arr[i];
                     }
                     answer[i] = min;
-                }else {
+                } else {
                     if (score[i] > min) {
                         for (int j = 0; j < k; j++) {
                             if (arr[j] == min) {
@@ -32,10 +32,5 @@ class Honor {
             return answer;
         }
 
-        public static void main(String[] args) {
-            Solution solution = new Solution();
-            System.out.println(
-                Arrays.toString(solution.solution(3, new int[]{10, 100, 20, 150, 1, 100, 200})));
-        }
     }
 }
