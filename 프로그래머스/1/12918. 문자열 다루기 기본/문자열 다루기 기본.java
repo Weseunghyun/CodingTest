@@ -6,12 +6,17 @@ class Solution {
                 return false;
             }
             
-            char[] arr = s.toCharArray();
+//             char[] arr = s.toCharArray();
             
-            for(char a : arr){
-                if(!Character.isDigit(a)){
-                    return false;
-                }
+//             for(char a : arr){
+//                 if(!Character.isDigit(a)){
+//                     return false;
+//                 }
+//             }
+//             return true;
+        
+            if(!s.matches("^[0-9]*$")){
+                return false;
             }
             return true;
         }
