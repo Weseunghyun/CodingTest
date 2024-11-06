@@ -27,6 +27,6 @@ class Solution {
             // }
             // return true;
             
-            return s.matches("\\d{4}|\\d{6}");
+            return s.matches("[0-9]{4}|[0-9]{6}");
         }
     }
