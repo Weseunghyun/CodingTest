@@ -8,7 +8,7 @@ class Solution {
                 for(int k=j+1; k<len; k++){
                     int result = nums[i] + nums[j] + nums[k];
                     int count = 0;
-                    for(int x=1; x<result; x++){
+                    for(int x=1; x<result/2; x++){
                         if(result%x==0){
                             count++;
                         }
