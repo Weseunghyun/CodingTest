@@ -17,25 +17,23 @@ class Solution {
         //     }
         // }
         // return maxW*maxH;
-        int tupple = sizes.length;
-        int column = sizes[0].length;
-        int[][] sorted = new int[tupple][column];
-        int maxTupple = 0;
-        int maxColumn = 0;
-        for(int i=0; i<tupple; i++){
-            sorted[i][0] = Math.max(sizes[i][0], sizes[i][1]);
-            sorted[i][1] = Math.min(sizes[i][0], sizes[i][1]);
-        }
         
-        for(int i=0; i<tupple; i++){
-            if(maxTupple<sorted[i][0]){
-                maxTupple = sorted[i][0];
+        int max = 0;
+        int min = 0;
+        
+        for(int[] size : sizes){
+            int parMax = Math.max(size[0], size[1]);
+            int parMin = Math.min(size[0], size[1]);
+            
+            if(parMax>max){
+                max = parMax;
             }
-            if(maxColumn<sorted[i][1]){
-                maxColumn = sorted[i][1];
+            
+            if(parMin>min){
+                min = parMin;
             }
         }
-        
-        return maxTupple * maxColumn;
+
+        return max * min;
     }
 }
