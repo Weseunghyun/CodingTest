@@ -12,7 +12,7 @@ class Solution {
             put('N', 0);
         }};
        
-        String answer = "";
+        StringBuilder sb = new StringBuilder();
         
         int len = survey.length;
         
@@ -37,6 +37,9 @@ class Solution {
         char three = map.get('M') > map.get('J') ? 'M' : 'J';
         char four = map.get('N') > map.get('A') ? 'N' : 'A';
         
-        return answer + one + two + three + four;
+        return sb.append(one)
+                .append(two)
+                .append(three)
+                .append(four).toString();
     }
 }
