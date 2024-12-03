@@ -13,28 +13,24 @@ class Solution {
     public String[] solution(String[] players, String[] callings) {
         
         Map<String, Integer> nameRanking = new HashMap<>(); 
-        String[] rankingName = new String[players.length];
+    
         for(int i=0; i<players.length; i++){
             nameRanking.put(players[i], i);
-            rankingName[i] = players[i]; 
         }
         
         for(int i=0; i<callings.length; i++){
             //callings 에서 언급된 역전할 사람의 순위와 이름을 가져옴
-            int currentRank = nameRanking.get(callings[i]);
-            String currentName = rankingName[currentRank];
-            //역전당할 사람의 이름을 가져옴
-            String frontName = rankingName[currentRank-1];
+            int idx = nameRanking.get(callings[i]);
             
-            //map에 있는 이름 순위를 바꿔주고 순위별로 저장되어있는 rankingName도 수정
-            nameRanking.put(currentName, currentRank-1);
-            nameRanking.put(frontName, currentRank);
-            
-            rankingName[currentRank] = frontName;
-            rankingName[currentRank-1] = currentName;
+            String temp = players[idx - 1];
+            players[idx - 1] = players[idx];
+            players[idx] = temp;
+
+            nameRanking.put(players[idx - 1], idx - 1);
+            nameRanking.put(players[idx], idx);
         }
         
-        return rankingName;
+        return players;
     }
     
 }
