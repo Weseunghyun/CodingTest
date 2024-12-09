@@ -1,7 +1,8 @@
 import java.util.*;
 class Solution {
+    /*
     public int[] solution(String s) {
-        /*
+        
         1. 문자열에 존재하는 0 을 없앤다.
         2. 문자열의 길이가 1인지 확인
         3. 1이 아니라면 길이를 파악한다
@@ -24,7 +25,6 @@ class Solution {
         비운 후에 size를 이진변환하면서 list에 추가한다.
 
         size가 1이 될때까지 알아서 while 반복문이 돌게 된다.
-        */
 
         char[] cArr = s.toCharArray();
         List<Character> list = new ArrayList<>();
@@ -60,5 +60,27 @@ class Solution {
         }
 
         return new int[] {repeat, deleteZeroCount};
+    }
+*/
+    
+    /*
+    다른 풀이 확인
+    문자열이 "1" 일 때까지 반복하는데
+    제거한 0의 개수 = 제거하기 전의 전체 길이 - 0을 제거하고 나서의 길이 로 구함...
+    그리고 숫자를 이진문자열로 변경해주는 toBinaryString이 있다는 사실을 처음 알았다.
+    */
+    public int[] solution(String s) {
+        int[] answer = new int[2];
+        int temp;
+        while( !s.equals("1") ) {
+            answer[1] += s.length();
+            s = s.replaceAll("0", "");
+            temp = s.length();
+            s = Integer.toBinaryString(temp);
+            //System.out.println("s : " + s ); 
+            answer[0]++;
+            answer[1] -= temp;
+        }
+        return answer;  
     }
 }
