@@ -36,6 +36,8 @@ class Solution {
 
         // 가로 길이 >= 세로 길이 조건에 맞는 경우 찾기
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            //map 에 put 할 때 key값은 작은값 -> 큰값 순서로 들어가기 때문에
+            //세로가 더 작거나 같아야하므로 key값을 세로길이 후보로 둔다.
             int h = entry.getKey(); // 세로 길이 후보
             int w = entry.getValue(); // 가로 길이 후보
 
