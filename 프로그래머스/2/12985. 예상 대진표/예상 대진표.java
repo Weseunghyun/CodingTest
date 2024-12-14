@@ -1,45 +1,45 @@
-class Solution
-{
-    public int solution(int n, int a, int b)
-    {
-        int round = 1;
-        boolean flag = true;
+// class Solution
+// {
+//     public int solution(int n, int a, int b)
+//     {
+//         int round = 1;
+//         boolean flag = true;
         
-        int diff = a-b;
+//         int diff = a-b;
             
-        if(Math.abs(diff) == 1){
-            int max = Math.max(a,b);
+//         if(Math.abs(diff) == 1){
+//             int max = Math.max(a,b);
             
-            if(max%2 == 0){
-                 return round;
-            }
-        }
+//             if(max%2 == 0){
+//                  return round;
+//             }
+//         }
             
         
-        while(flag){
-            a = (a%2 == 0) ? (a/2) : (a/2+1);
-            b = (b%2 == 0) ? (b/2) : (b/2+1);
+//         while(flag){
+//             a = (a%2 == 0) ? (a/2) : (a/2+1);
+//             b = (b%2 == 0) ? (b/2) : (b/2+1);
             
-            int difference = a-b;
+//             int difference = a-b;
             
-            if(Math.abs(difference) != 1){
-                round++;
-                continue;
-            }
+//             if(Math.abs(difference) != 1){
+//                 round++;
+//                 continue;
+//             }
             
-            int max = Math.max(a,b);
+//             int max = Math.max(a,b);
             
-            if(max%2 == 0){
-                flag = false;
-            }
+//             if(max%2 == 0){
+//                 flag = false;
+//             }
             
-            round++;
-        }
+//             round++;
+//         }
 
      
-        return round;
-    }
-}
+//         return round;
+//     }
+// }
 /*
 우선 내가 이기고 나서 다음 번호가 몇일지 아는 방법을 생각해보자
 내가 부여받은 번호가 홀수라면?
@@ -64,4 +64,23 @@ a,b 가 각각 짝수인지 홀수인지 확인한다. (조건문 or 삼항 연�
 
 이 한 사이클을 진행할 때마다 값으로 넘겨줄 answerCount 값을 1 증가시킴.
 
+주의해야할 점은 이미 시작부터 만나는 경우에서는 반복문에 들어가면 빠져나올 수 없으니
+while 반복문에 들어가기 전에 검증하는 과정이 추가되어야함.
 */
+
+//다른 풀이
+//이런거 볼 때마다 벽느낌 나만 바보인가 싶은
+class Solution
+{
+    public int solution(int n, int a, int b)
+    {
+        int round = 0;
+        while(a != b)
+        {
+            a = a/2 + a%2;
+            b = b/2 + b%2;
+            round++;
+        }
+        return round;
+    }
+}
