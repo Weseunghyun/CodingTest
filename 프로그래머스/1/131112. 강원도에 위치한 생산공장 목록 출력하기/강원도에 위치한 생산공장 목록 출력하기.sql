@@ -1,0 +1,6 @@
+-- 조건 1 강원도에 위치, 공장 id, 이름, 주소조회
+-- 조건 2 공장 id 오름차순 정렬
+SELECT FACTORY_ID, FACTORY_NAME, ADDRESS 
+FROM FOOD_FACTORY 
+WHERE ADDRESS LIKE '강원도%'
+ORDER BY FACTORY_ID
