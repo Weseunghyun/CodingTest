@@ -1,15 +1,19 @@
+import java.util.*;
+
 class Solution {
     public int[] solution(String[] name, int[] yearning, String[][] photo) {
         int[] answer = new int[photo.length];
+        Map<String, Integer> nameYearnMap = new HashMap<>();
+        
+        for(int i=0; i<name.length; i++) {
+            nameYearnMap.put(name[i], yearning[i]);
+        }
         
         for(int i=0; i<photo.length; i++){
             int sum = 0;
-            for(String ph : photo[i]) {
-                for(int j=0; j<name.length; j++){
-                    if(name[j].equals(ph)) {
-                        sum+=yearning[j];
-                        continue;
-                    }
+            for(int j=0; j<photo[i].length; j++){
+                if(nameYearnMap.containsKey(photo[i][j])) {
+                    sum += nameYearnMap.get(photo[i][j]);
                 }
             }
             answer[i] = sum;
