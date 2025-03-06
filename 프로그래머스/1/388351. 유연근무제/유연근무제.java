@@ -1,8 +1,7 @@
 class Solution {
     public int solution(int[] schedules, int[][] timelogs, int startday) {
-        //지각안한 출근횟수 저장하는 count 배열 미리 생성
+        //count 배열을 굳이 생성할 필요 없이 푸는 방식
         int employeeCount = schedules.length;
-        int[] count = new int[employeeCount];
 
         //이제 schedules 를 통해서 실제 커트라인까지의 배열로 변환해주자.
         for(int i=0; i<employeeCount; i++) {
@@ -13,33 +12,29 @@ class Solution {
             }
         }
         
+        int answer = 0;
         //이제 실제 커트라인 배열이 생겼으니 timelogs 배열을 돌면서 각 직원마다의 count 수를 구해야함.
         for(int i=0; i<employeeCount; i++) {
             //새로운 직원의 count를 계산한다면 다시 startIdx를 초기화해준다. 안해도 될 것 같지만 찜찜해서
             int startIdx = 8-startday;
+            //어짜피 직원 하나당 올바르게 출근한 날짜를 구하는 것이기 때문에 validDays = 5 라면 answer에 추가하면 됨
+            int validDays = 0;
             
             //한 직원당 startIdx로 인해 5번만 순회하면됨. 비교해야할 인덱스만 찾았기 때문.
             for(int j=0; j<5; j++) {
-                //평일 중 출근한 시간 값을 저장
-                int workTime = timelogs[i][startIdx%7];
                 //출근한 시간 값이 커트라인보다 작거나 같다면 지각안하고 잘 출근한것!
-                if(workTime <= schedules[i]) {
+                if(timelogs[i][startIdx%7] <= schedules[i]) {
                     //잘 출근했다면 count[i] 값 즉 해당 직원이 올바르게 출근한 횟수를 1 늘림
-                    count[i]++;
+                    validDays++;
                     startIdx++;
                 } else {
                     startIdx++;
                 }
             }
+            
+            if (validDays == 5) answer++;
         }
-        
-        int answer = 0;
-        for(int c : count) {
-            if(c == 5) {
-                answer++;
-            }
-        }
-        
+     
         return answer;
     }
 }
