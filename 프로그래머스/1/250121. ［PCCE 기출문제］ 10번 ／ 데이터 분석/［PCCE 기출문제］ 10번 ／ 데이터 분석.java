@@ -1,10 +1,42 @@
 import java.util.*;
 
+// List 사용 버전
+// class Solution {
+//     public int[][] solution(int[][] data, String ext, int val_ext, String sort_by) {
+        
+//         //ext 를 기준으로 작은값들을 저장할 list 생성
+//         List<int[]> list = new ArrayList<>();
+        
+//          // 문자열 key에 대한 인덱스 매핑
+//         Map<String, Integer> map = new HashMap<>();
+//         map.put("code",0);
+//         map.put("date",1);
+//         map.put("maximum",2);
+//         map.put("remain",3);
+        
+//         //비교해야할 기준의 인덱스 가져오기 
+//         int compare = map.get(ext);
+        
+//         //기준 인덱스만 비교해서 list에 저장
+//         for(int i=0; i<data.length; i++) {
+//             if(data[i][compare] < val_ext) {
+//                 list.add(data[i]);
+//             }
+//         }
+        
+//         //오름차순 정렬할 기준 인덱스 저장
+//         int asc = map.get(sort_by);
+        
+//         //list 의 sort 메서드와 Comparator의 comparingInt 를 사용해 정렬 수행
+//         list.sort(Comparator.comparingInt(a -> a[asc]));
+        
+//         return list.toArray(new int[0][]);
+//     }
+// }
+
+//배열만 사용,어떤게 성능이 더 좋나 테스트
 class Solution {
     public int[][] solution(int[][] data, String ext, int val_ext, String sort_by) {
-        
-        //ext 를 기준으로 작은값들을 저장할 list 생성
-        List<int[]> list = new ArrayList<>();
         
          // 문자열 key에 대한 인덱스 매핑
         Map<String, Integer> map = new HashMap<>();
@@ -13,23 +45,31 @@ class Solution {
         map.put("maximum",2);
         map.put("remain",3);
         
-        //비교해야할 기준의 인덱스 가져오기 
-        int compare = map.get(ext);
+         // 비교해야 할 기준 인덱스 가져오기, 오름차순 정렬 인덱스 저장
+        int compareIdx = map.get(ext);
+        int sortIdx = map.get(sort_by);
         
+        //새롭게 생성할 배열 행 수
+        int count = 0;
         //기준 인덱스만 비교해서 list에 저장
         for(int i=0; i<data.length; i++) {
-            if(data[i][compare] < val_ext) {
-                list.add(data[i]);
+            if(data[i][compareIdx] < val_ext) {
+                count++;
             }
         }
         
-        //오름차순 정렬할 기준 인덱스 저장
-        int asc = map.get(sort_by);
+        int[][] arr = new int[count][];
+        int idx = 0;
+        for(int row[] : data) {
+            if(row[compareIdx] < val_ext) {
+                arr[idx++] = row;
+            }
+        }
         
-        //list 의 sort 메서드와 Comparator의 comparingInt 를 사용해 정렬 수행
-        list.sort(Comparator.comparingInt(a -> a[asc]));
+        //배열을 직접 정렬
+        Arrays.sort(arr, Comparator.comparingInt(a->a[sortIdx]));
         
-        return list.toArray(new int[0][]);
+        return arr;
     }
 }
 
