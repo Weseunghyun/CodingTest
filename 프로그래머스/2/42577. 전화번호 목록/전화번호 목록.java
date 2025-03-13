@@ -1,26 +1,42 @@
 import java.util.*;
 
+// class Solution {
+//     public boolean solution(String[] phone_book) {
+//         Arrays.sort(phone_book);
+
+//         boolean answer = true;
+
+//         for(int i=1; i<phone_book.length; i++) {
+//             if(phone_book[i].startsWith(phone_book[i-1])) {
+//                 return !answer;
+//             }
+//         }
+
+//         return answer;
+//     }
+// }
+
 class Solution {
     public boolean solution(String[] phone_book) {
-        boolean answer = true;
         Map<String, Integer> map = new HashMap<>();
-
-        for (String s : phone_book) {
-            map.put(s, map.getOrDefault(s, 0) + 1);
+        boolean answer = true;
+        
+        for(String phone : phone_book) {
+            map.put(phone, 1);
+            
         }
-
-        // 각 번호가 다른 번호의 접두어인지 확인
-        for (String number : phone_book) {
-            for (int i = 1; i < number.length(); i++) {
-                if (map.containsKey(number.substring(0, i))) {
-                    return false;
+        
+        for(String phone : phone_book) {
+            for(int i=1; i<phone.length(); i++){
+                if(map.containsKey(phone.substring(0,i))) {
+                    return !answer;
                 }
             }
         }
+                   
         return answer;
     }
 }
-
 
 /*
 같은 전화번호가 중복해서 들어가있지 않으므로 무조건 특정 번호가 다른 번호의 접두어인 경우는
