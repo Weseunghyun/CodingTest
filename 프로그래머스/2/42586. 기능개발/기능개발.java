@@ -32,13 +32,10 @@ class Solution {
             }
             
             //만약 처음 빼온 값이 다음 값보다 크거나 같다면 그 해당 값을 빼주고 count 를 늘려준다.
-            while(compare >= q.peek()) {
+            while(q.peek() != null && compare >= q.peek()) {
                 q.poll();
                 
                 count++;
-                if(q.peek()==null) {
-                    break;
-                }
             }
             
             //반복문을 빠져나왔다는건 맨앞에 있던 비교군의 값보다 더 큰 기간을 가진 값이 나타났다는 것!
