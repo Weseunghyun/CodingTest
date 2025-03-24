@@ -16,7 +16,7 @@ class Solution {
     1. yellow의 약수를 찾는다. yellow의 절반까지 찾는다. 약수의 쌍을 Map에 저장할까?
     2. key와 value의 차이가 가장 작은 쌍을 찾고 key+2, value+2를 리턴한다.
     */
-     public int[] solution(int brown, int yellow) {
+    public int[] solution(int brown, int yellow) {
         // 노란색이 완벽한 제곱수일 경우 정사각형 확인
         if (Math.sqrt(yellow) % 1 == 0) {
             int len = (int) Math.sqrt(yellow);
