@@ -3,14 +3,8 @@ class Solution {
         int row = 0;
         int col = 0;
         
-        //yellow가 제곱수인 경우 정사각형인지 확인
-        if(Math.sqrt(yellow) % 1 == 0) {
-            int sqr = (int)Math.sqrt(yellow);
-            int compare = 4 * sqr + 4;
-            if(brown == compare) {
-                int len = sqr + 2; 
-                return new int[] {len, len};
-            }
+        if (yellow == 1) {
+            return new int[] {3, 3}; // 1칸 노란색이니까 3x3만 가능
         }
         
         for(int i=1; i<=yellow/2; i++) {
