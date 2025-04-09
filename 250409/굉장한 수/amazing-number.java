@@ -10,7 +10,7 @@ public class Main {
         } else if (a%2==0 && a%5==0) {
             System.out.println("true");
         } else {
-            System.out.println("False");
+            System.out.println("false");
         }
     }
 }
