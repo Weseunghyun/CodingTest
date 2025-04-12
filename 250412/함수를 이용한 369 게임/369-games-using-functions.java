@@ -11,10 +11,21 @@ public class Main {
     public static int find(int a, int b) {
         int count = 0;
         for (int i=a; i<=b ;i++) {
-            if (i%3 == 0 || (i/10) == 3 || (i/10) == 6 || (i/10) == 9 || (i%10) == 3 || (i%10) == 6 || (i%10) == 9) {
+            if(isTarget(i)) {
                 count++;
             }
         }
         return count;
+    }
+
+    public static boolean isTarget(int i) {
+        if(i%3==0) return true;
+
+        String s = String.valueOf(i);
+        if(s.contains("3") || s.contains("6") || s.contains("9")) {
+            return true;
+        }
+
+        return false;
     }
 }
