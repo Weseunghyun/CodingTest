@@ -19,6 +19,7 @@ public class Main {
     }
 
     private static boolean isTarget(int i) {
+        if (i < 2) return false;  // 2보다 작은 수는 소수가 아님
         for (int j=2; j<i; j++) {
             if (i%j == 0) {
                 return false;
