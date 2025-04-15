@@ -1,8 +1,10 @@
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        Map<Integer, Integer> map = new HashMap<>();
         boolean isSame = true;
         int n = sc.nextInt();
         int[] a = new int[n];
@@ -14,14 +16,16 @@ public class Main {
             b[i] = sc.nextInt();
         }
         // Please write your code here.
-        Arrays.sort(a);
-        Arrays.sort(b);
-
         for (int i = 0; i < n; i++) {
-            if (a[i] != b[i]) {
+            map.put(a[i], map.getOrDefault(a[i], 0) + 1);
+            map.put(b[i], map.getOrDefault(b[i], 0) + 1);
+        }
+
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            if (entry.getValue() != 2) {
                 isSame = false;
                 break;
-            } 
+            }
         }
 
         if (isSame) {
