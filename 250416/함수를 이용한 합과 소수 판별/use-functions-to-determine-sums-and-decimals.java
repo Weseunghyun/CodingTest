@@ -12,25 +12,30 @@ public class Main {
     public static void sosu(int a, int b) {
         int count = 0;
         for (int i = a; i <= b; i++) {
-            boolean isSosu = true;
-            for (int j=2; j<=a/2; j++) {
-                if (i%j == 0) {
-                    isSosu = false;
-                    break;
-                }
-            }
-            if (isSosu) {
-                int c = i;
-                int sum = 0;
-                while (c > 0) {
-                    sum += c%10;
-                    c /= 10;
-                }
+            if (isPrime(i)) {
+                int sum = digitSum(i);
                 if (sum % 2 == 0) {
                     count++;
                 }
             }
         }
         System.out.println(count);
+    }
+
+    public static boolean isPrime(int n) {
+        if (n < 2) return false;
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) return false;
+        }
+        return true;
+    }
+
+    public static int digitSum(int n) {
+        int sum = 0;
+        while (n > 0) {
+            sum += n % 10;
+            n /= 10;
+        }
+        return sum;
     }
 }
