@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Scanner;
@@ -14,7 +15,7 @@ public class Main {
             weathers[i] = new Weather(date, day, weather);
         }
         // Please write your code here.
-        Arrays.sort(weathers, Comparator.comparing(a -> a.weather));
+        Arrays.sort(weathers, Comparator.comparing(a -> a.date));
 
         for (Weather weather : weathers) {
             if (weather.weather.equals("Rain")) {
