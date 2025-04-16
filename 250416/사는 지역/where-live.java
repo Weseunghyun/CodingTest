@@ -20,7 +20,7 @@ public class Main {
             persons[i] = new Person(names[i], addresses[i], regions[i]);
         }
 
-        Arrays.sort(regions);
+        Arrays.sort(names);
 
         for (int i = 0; i < n; i++) {
             if (persons[i].name.equals(names[n - 1])) {
