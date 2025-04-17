@@ -22,27 +22,16 @@ public class Main {
     }
 
     public static boolean isLinked(int[] a, int[] b) {
-        boolean isFirst = false;
-        boolean isRight = true;
-        int bIdx = 0;
-        for (int i = 0; i < a.length; i++) {
-            if (a[i] == b[0]) {
-                isFirst = true;
-            }
-
-            if (isFirst) {
-                if (bIdx < b.length) {
-                    if (a[i] != b[bIdx]) {
-                        return !isRight;
-                    }
-                    bIdx++;
-                }
+    for (int i = 0; i <= a.length - b.length; i++) {
+        boolean match = true;
+        for (int j = 0; j < b.length; j++) {
+            if (a[i + j] != b[j]) {
+                match = false;
+                break;
             }
         }
-
-        if(bIdx == 0) {
-            return !isRight;
-        }
-        return isRight;
+        if (match) return true;
     }
+    return false;
+}
 }
