@@ -30,8 +30,8 @@ public class Main {
                 isFirst = true;
             }
 
-            if (bIdx < b.length) {
-                if (isFirst) {
+            if (isFirst) {
+                if (bIdx < b.length) {
                     if (a[i] != b[bIdx]) {
                         return !isRight;
                     }
@@ -40,6 +40,9 @@ public class Main {
             }
         }
 
+        if(bIdx == 0) {
+            return !isRight;
+        }
         return isRight;
     }
 }
