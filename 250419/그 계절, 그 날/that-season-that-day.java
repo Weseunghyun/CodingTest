@@ -11,53 +11,40 @@ public class Main {
     }
 
     public static String isExistDayAndWeather(int y, int m, int d) {
-        boolean isYoon = isYoonYear(y);
-        
-        if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) {
-            if (d>=1 && d <= 31) {
-                if (m==1 || m==12) {
-                    return "Winter";
-                }
-                if (m==3 || m==5) {
-                    return "Spring";
-                }
-                if (m == 7 || m == 8) {
-                    return "Summer";
-                }
-                if (m == 10) {
-                    return "Fall";
-                }
-            }
-            return "-1";
-        } else if (m==2) {
-            if (isYoon) {
-                if (d >= 1 && d <= 29) {
-                    return "Winter";
-                }
-            } else {
-                if (d >= 1 && d <= 28) {
-                    return "Winter";
-                }
-            }
-            return "-1";
-        } else if (m == 4 || m == 6 || m == 9 || m == 11) {
-            if (d>=1 && d <= 30) {
-                if (m==9||m==11) {
-                    return "Fall";
-                }
-                if (m==4) {
-                    return "Spring";
-                }
-                if (m==6) {
-                    return "Summer";
-                }
-            }
-            return "-1";
-        } else {
+        if (!isValidDate(y,m,d)){
             return "-1";
         }
+
+        return getSeason(m);
     }
-    
+
+    private static boolean isValidDate(int y, int m, int d) {
+        if (m<1 || m>12) {
+            return false;
+        }
+
+        int[] days = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+        if (isYoonYear(y)) {
+            days[1] = 29;
+        }
+
+        return d >= 1 && d <= days[m - 1];
+    }
+
+
+    public static String getSeason(int m) {
+        if (m >= 3 && m <= 5) {
+            return "Spring";
+        } else if (m >= 6 && m <= 8) {
+            return "Summer";
+        } else if (m >= 9 && m <= 11) {
+            return "Fall";
+        } else {
+            return "Winter"; // 12, 1, 2월
+        }
+    }
+
     public static boolean isYoonYear(int y){
         if (y%4 == 0) {
             if (y%100 == 0) {
