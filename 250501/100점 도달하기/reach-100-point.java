@@ -1,22 +1,20 @@
-import java.util.*;
+import java.util.Scanner;
+
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        for (int i = n; i <= 100; i++) {
-            String grade;
-            if (i >= 90) {
-                grade = "A";
-            } else if (i >= 80) {
-                grade = "B";
-            } else if (i >= 70) {
-                grade = "C";
-            } else if (i >= 60) {
-                grade = "D";
-            } else {
-                grade = "F";
-            }
-            System.out.print(grade + " ");
-        }
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    for (int i = n; i <= 100; i++) {
+      String grade = getGrade(i);
+      System.out.print(grade + " ");
     }
+  }
+  
+  private static String getGrade(int score) {
+    if (score >= 90) return "A";
+    else if (score >= 80) return "B";
+    else if (score >= 70) return "C";
+    else if (score >= 60) return "D";
+    else return "F";
+  }
 }
