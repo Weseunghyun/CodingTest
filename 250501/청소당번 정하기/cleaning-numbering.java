@@ -1,16 +1,18 @@
-import java.util.Scanner;
-
+import java.util.*;
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        
-        // Calculate the number of times each location is cleaned
-        int classroomCleanings = (n + 2 - 1) / 2;
-        int corridorCleanings = (n + 3 - 1) / 3;
-        int restroomCleanings = n / 12;
-        
-        // Print the number of cleanings for each location
-        System.out.println(classroomCleanings + " " + corridorCleanings + " " + restroomCleanings);
-    }
+public static void main(String[] args) {
+Scanner sc = new Scanner(System.in);
+int n = sc.nextInt();
+long[] counts = new long[3];
+for (int i = 1; i <= n; i++) {
+if (i % 2 == 0) { // 교실을 청소합니다.
+counts[0]++;
+} else if (i % 3 == 0) { // 복도를 청소합니다.
+counts[1]++;
+} else { // 화장실을 청소합니다.
+counts[2]++;
+}
+}
+System.out.println(counts[0]+" "+counts[1]+" "+counts[2]);
+}
 }
