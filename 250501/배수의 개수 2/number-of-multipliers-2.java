@@ -1,18 +1,17 @@
 import java.util.*;
- 
-public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int count = 0;
+public class Main{
+    public static void main(String[] args){
+        Scanner in=new Scanner(System.in);
         
-        for (int i = 0; i < n; i++) {
-            int num = sc.nextInt();
-            if (num % 2 == 1) {
-                count++;
+        //배수의 개수
+        int count_even=0;
+        
+        for(int i=1;i<=10;i++){
+            if(in.nextInt()%2==0){
+                count_even++;
             }
+            
         }
-        
-        System.out.println(count);
+        System.out.println(count_even);
     }
 }
