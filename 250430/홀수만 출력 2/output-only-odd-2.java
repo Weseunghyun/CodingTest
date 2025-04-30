@@ -6,11 +6,11 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int n2 = sc.nextInt();
-        for (int i = n2; i >= n; i--){
+        for (int i = n; i >= n2; i--){
             if (i % 2 == 1) {
                 System.out.print(i + " ");
             }
-            
+
         }
     }
 }
