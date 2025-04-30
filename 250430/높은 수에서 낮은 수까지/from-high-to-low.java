@@ -5,8 +5,9 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int a = sc.nextInt();
         int b = sc.nextInt();
-
-        for (int i = b; i >= a; i--) {
+        int max = Math.max(a,b);
+        int min = Math.min(a,b);
+        for (int i = max; i >= min; i--) {
             System.out.print(i + " ");
         }
     }
