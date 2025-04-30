@@ -1,23 +1,15 @@
 import java.util.*;
-
 class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int cleaningCount = 0;
-        int toiletCleaningCount = 0;
-        int officeCleaningCount = 0;
-        for (int i = 1; i <= n; i++) {
-            if (i % 2 == 0) {
-                cleaningCount++;
-            }
-            if (i % 3 == 0) {
-                toiletCleaningCount++;
-            }
-            if (i % 12 == 0) {
-                officeCleaningCount++;
-            }
-        }
-        System.out.println(cleaningCount + " " + toiletCleaningCount + " " + officeCleaningCount);
+        
+        // Calculate the number of times each location needs to be cleaned
+        int classroomsCleanings = (n + 1) / 2;
+        int corridorsCleanings = (n + 3) / 3;
+        int bathroomsCleanings = (n + 12) / 12;
+        
+        // Print the results
+        System.out.println(classroomsCleanings + " " + corridorsCleanings + " " + bathroomsCleanings);
     }
 }
