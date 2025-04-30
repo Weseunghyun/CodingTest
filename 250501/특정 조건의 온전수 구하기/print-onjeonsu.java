@@ -5,18 +5,10 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         for (int i = 1; i <= n; i++) {
-            if (isPerfectNumber(i)) {
-                System.out.print(i + " ");
-            }
+            if (i % 2 == 0) continue;
+            if (i % 10 == 5) continue;
+            if (i % 3 == 0 && i % 9 != 0) continue;
+            System.out.print(i + " ");
         }
-    }
-    
-    private static boolean isPerfectNumber(int number) {
-        for (int i = 2; i <= Math.sqrt(number); i++) {
-            if (number % i == 0) {
-                return false;
-            }
-        }
-        return true;
     }
 }
