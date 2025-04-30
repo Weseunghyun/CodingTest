@@ -1,23 +1,15 @@
-package com.company;
-import java.util.*;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int B, A;
-        System.out.print("Enter the value of B: ");
-        B = sc.nextInt();
-        System.out.print("Enter the value of A: ");
-        A = sc.nextInt();
-        if (A >= B) {
-            while (B <= A) {
-                System.out.println(B);
-                B++;
-            }
+        int n = sc.nextInt();
+        if (n < 1000) {
+            System.out.println("Easy");
+        } else if (n >= 1000 && n < 5000) {
+            System.out.println("Medium");
         } else {
-            while (A <= B) {
-                System.out.println(A);
-                A++;
-            }
+            System.out.println("Hard");
         }
     }
 }
