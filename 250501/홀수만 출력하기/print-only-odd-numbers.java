@@ -6,7 +6,7 @@ public class Main {
         for (int i=0; i<n; i++) {
             int num = sc.nextInt();
             if (num%2 != 0 && num%3 == 0) {
-                System.out.println(num);
+                System.out.printn(num);
             }
         }
     }
