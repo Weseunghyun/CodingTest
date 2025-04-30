@@ -1,11 +1,14 @@
-package Main;
+package com.company;
+
 import java.util.*;
-public class Main{
-    public static void main(String[] args){
-        Scanner input = new Scanner(System.in);
-        int A = input.nextInt();
-        int B = input.nextInt();
-        for (int i = B; i >= A; i--) {
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+
+        for (int i = b; i >= a; i--) {
             System.out.print(i + " ");
         }
     }
